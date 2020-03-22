@@ -12,14 +12,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+ 
 Route::get('/', function () {
+
     $user = factory(\App\User::class)->create();
 
-    $user->phone()->create([
-        'phone'=>'111-222-333-444',
+    // create
+    $user->posts()->create([
+        'title'=>'new post',
+        'body'=>'new body',
     ]);
 
+    // update
+    $user->posts->first()->title = 'new better title';
+
+    $user->push();
+    return $user->posts;
 });
 
 Auth::routes();

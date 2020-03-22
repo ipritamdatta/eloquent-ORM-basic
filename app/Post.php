@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Phone extends Model
+class Post extends Model
 {
-    protected $fillable=['phone'];
+    protected $fillable=['title','body','user_id'];
 
     public function user(){
         return $this->belongsTo(User::class);
